@@ -1,0 +1,20 @@
+syntax="proto3";
+
+message Req 
+{
+    int32   id = 1;
+    string  query = 2;
+    int32   req_value = 3;
+}
+
+message Res
+{
+    int32   id = 4;
+    int32   res_value = 5;
+    string  res_string = 6;
+}
+
+service Example
+{
+    rpc RunExample (Req) returns (Res) {}
+}
