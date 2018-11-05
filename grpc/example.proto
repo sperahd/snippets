@@ -16,5 +16,6 @@ message Res
 
 service Example
 {
+    rpc RunExample2 (Req) returns (Res) {}
     rpc RunExample (Req) returns (Res) {}
 }

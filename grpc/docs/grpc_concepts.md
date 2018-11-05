@@ -69,4 +69,4 @@ rpc BidiHello(stream HelloRequest) returns (stream HelloResponse){
 
 ## Notes
 1. Multiple client connections on a single server port are allowed.
-2. Are unsolicited messages from the server to client allowed?
+2. Are unsolicited messages from the server to client allowed? grpc server push to client?
