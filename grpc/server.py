@@ -9,6 +9,7 @@ from google.protobuf import json_format as json_format
 
 class Example(example_pb2_grpc.ExampleServicer):
     def RunExample(self, request, context):
+        time.sleep(10)
         print(json_format.MessageToJson(request))
         if request.req_value == 131:
             return example_pb2.Res(id=1, res_string="Yes, I ack")
