@@ -5,7 +5,7 @@
 3. GRPC allows for only one input parameter type and exactly one return value type. If needed multiple messages can be clubbed into a single message using proto definitions to allow for multiple types of message in a single RPC call.
 4. GRPC allows a stream of input parameters and a stream of return values of the same type.
 
-# Code Snippets
+## Code Snippets
 ~~~~
 
 service HelloService {
@@ -53,20 +53,20 @@ rpc BidiHello(stream HelloRequest) returns (stream HelloResponse){
 
 ## Streaming 
 
-# Unary RPC (https://grpc.io/docs/guides/concepts.html#unary-rpc)
+### Unary RPC (https://grpc.io/docs/guides/concepts.html#unary-rpc)
 1. Client calls service method on the client stub, the server is notified with client's metadata, method name and the deadline(if applicable). 
 2. The server computes the method and the responds to the client's request with it's own metadata and return value.
 3. Client receives the return value is done with the RPC.
 
-# Server streaming RPC (https://grpc.io/docs/guides/concepts.html#server-streaming-rpc)
+### Server streaming RPC (https://grpc.io/docs/guides/concepts.html#server-streaming-rpc)
 1. Same a unary RPC but the server sends a stream of response after receiving the request and then may/may not send trailing metadata
 
-# Client streaming RPC (https://grpc.io/docs/guides/concepts.html#server-streaming-rpc)
+### Client streaming RPC (https://grpc.io/docs/guides/concepts.html#server-streaming-rpc)
 1. Same a server streaming RPC but in this case the client sends a stream of requests before the server calculates the response.
 
-# Bi-directional streaming RPC (https://grpc.io/docs/guides/concepts.html#bidirectional-streaming-rpc)
+### Bi-directional streaming RPC (https://grpc.io/docs/guides/concepts.html#bidirectional-streaming-rpc)
 1. Call is initiated by the client, the server may wait or send response immediately. Next the server and client can talk to each other in any order. Client and server can now ping pong each other.
 
-# Notes
+## Notes
 1. Multiple client connections on a single server port are allowed.
 2. Are unsolicited messages from the server to client allowed?
