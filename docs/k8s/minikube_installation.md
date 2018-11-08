@@ -50,9 +50,9 @@ EOF
 $ yum install kubectl
 ~~~~
 
-### Note: Preferably follow steps [here](https://github.com/kubernetes/minikube/releases)
-
 ## minikube installation (v0.30.0)
+
+### Note: Preferably follow steps [here](https://github.com/kubernetes/minikube/releases)
 
 1. Download minikube binary
 
