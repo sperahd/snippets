@@ -70,7 +70,7 @@ $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/min
 $ minikube start
 ~~~~
 
-Note: If the above command is stuck at any point for more than 2-3 minutes there is good chance there is something wrong. Please check minikube logs by running:
+> Note: If the above command is stuck at any point for more than 2-3 minutes there is good chance there is something wrong. Please check minikube logs by running:
 
 ~~~~
 $ minikube logs
@@ -132,7 +132,7 @@ minikube stop
 
 4. Development efficiency with minikube
 
-k8s requires docker images to be stored in some docker registry from where the images can be pulled and run. In case of local dev setup, the steps might be too cumbersome and time consuming. minikube allows us to expose the host docker environment to minikube environment by running:
+> k8s requires docker images to be stored in some docker registry from where the images can be pulled and run. In case of local dev setup, the steps might be too cumbersome and time consuming. minikube allows us to expose the host docker environment to minikube environment by running:
 
 ~~~~
 $ eval $(minikube docker-env)
