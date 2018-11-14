@@ -33,3 +33,48 @@ Some examples of Controllers that contain one or more pods include:
 1. Deployment
 2. StatefulSet
 3. DaemonSet
+
+## Pod template(YAML)
+
+~~~~
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
+    env:
+    - name: III
+      value: abc
+    - name: UUU
+      value: def
+    volumeMounts:
+    - mountPath: /mnt/abcd
+      name: mnt-abcd
+    - mountPath: /mnt/efgh
+      name: mnt-efgh
+    
+    volumes:
+    - name: mnt-abcd
+      hostPath:
+        path: /mnt/abcd
+        type: Directory 
+    - name: mnt-efgh
+      hostPath:
+        path: /mnt/efgh
+        type: Directory 
+~~~~
+
+1. .spec.containers is a list all the containers that are part of the pod.
+2. .spec.containers[0].image is the image name from which the container has to be created.
+3. .spec.containers[0].imagePullPolicy is self explanatory. Takes following values: IfNotPresent, Always, Never.
+4. .spec.containers[0].command is entrypoint to the container.
+5. .spec.containers[0].env is a list of environment variables to be passed to the container.
+6. .spec.containers[0].volumeMounts is a list of volumes to be mounted in the container.
+7. .spec.volumes is the a list of volumes created which can be mounted in any of the pod containers using the above volumeMounts specifier.

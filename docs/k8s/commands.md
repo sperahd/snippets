@@ -1,3 +1,11 @@
+## minikube
+
+### To copy a file from local system to minikube env
+
+~~~~
+scp -i $(minikube ssh-key) $local_file docker@$(minikube ip):$path_to_copy_to
+~~~~
+
 ## Pods
 
 ### To list all the running pods
@@ -59,3 +67,33 @@ kubectl get service
 ~~~~
 kubectl describe service $service_name
 ~~~~
+
+### To send udp data from host system to container running in minikube vm
+
+Following creates a service
+~~~~
+kubectl expose deployment $dep_name --port=$Portrequired --type=NodePort --protocol=UDP --name=$dep-name-udp-in
+kubectl get service $dep-name-udp-in
+~~~~
+
+Output
+~~~~
+$dep-name-udp-in   NodePort   10.103.121.154   <none>        $actual_port:$mapped_port/UDP   2h
+~~~~
+
+Check minikube ip
+
+~~~~
+minikube ip
+~~~~
+
+Figure out minikube ip interface(generally it is vboxnet0)
+
+To stream udp to the container using above NodePort
+~~~~
+./udp_send.sh <interface> <minikube-ip> <$mapped_port>
+~~~~
+
+### To send udp data from minikube container to host system
+
+Stream to the local ip of the host system
