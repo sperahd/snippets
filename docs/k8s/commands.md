@@ -28,6 +28,14 @@ kubectl delete pod $pod_name
 
 ## configMaps
 
+### To create a configmap from a file
+
+Note1: Following will create a configMap from a file abcd.json as config.json
+Note2: A configMap mapped file cannot be edited
+~~~~
+kubectl create configmap config-json --from-file=config.json=abcd.json
+~~~~
+
 ### To list all the configMaps
 
 ~~~~

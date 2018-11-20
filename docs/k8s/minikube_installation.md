@@ -70,13 +70,32 @@ $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/min
 $ minikube start
 ~~~~
 
-> Note: If the above command is stuck at any point for more than 2-3 minutes there is good chance there is something wrong. Please check minikube logs by running:
+2. Specifying parameters to minikube start(For more such parameters, check [here](https://darkowlzz.github.io/post/minikube-config/)
+
+> Note: If there is already a minikube cluster, first delete it using:
+
+~~~~
+$ minikube stop; minikube delete
+~~~~
+
+~~~~
+$ minikube start --memory 2048 --cpus 10
+~~~~
+> Note 0: If minikube delete is run without running minikube stop, minikube start fails next time onwards and the solution is to delete ~/.minikube/ directory
+
+~~~~
+$ sudo rm -rf ~/.minikube/
+~~~~
+
+> Note 1: Any new parameter cannot be applied after minikube start, minikube has to be first stopped and then deleted for any parameter addition.
+
+> Note 2: If the above command is stuck at any point for more than 2-3 minutes there is good chance there is something wrong. Please check minikube logs by running:
 
 ~~~~
 $ minikube logs
 ~~~~
 
-2. Test minikube installation 
+3. Test minikube installation 
 
 ~~~~
 $ kubectl run hello-minikube --image=k8s.gcr.io/echoserver:1.10 --port=8080
@@ -124,13 +143,13 @@ $ kubectl delete deployment hello-minikube
 
 ~~~~
 
-3. Stop minikube
+4. Stop minikube
 
 ~~~~
 minikube stop
 ~~~~
 
-4. Development efficiency with minikube
+5. Development efficiency with minikube
 
 > k8s requires docker images to be stored in some docker registry from where the images can be pulled and run. In case of local dev setup, the steps might be too cumbersome and time consuming. minikube allows us to expose the host docker environment to minikube environment by running:
 
