@@ -22,9 +22,9 @@ redisContext *redis_conn_timeout(const char *ip, int port,
 {
     redisContext *ctx = NULL;
     ctx = redisConnectWithTimeout(ip, port, timeout);
-    if (!ctx)
+    if (!ctx || ctx->err)
     {
-        printf("Could not connect to redis-server, exiting ...\n");
+        printf("Could not connect to redis-server, exiting ... %s\n", ctx->errstr);
         exit(-1);
     }
     return ctx;
@@ -154,7 +154,6 @@ int main()
 
     //Create redisContext with timeout
     redisContext *ctx = redis_conn_timeout("localhost", 6379, t);
-
 
     //Following is an example of STRING data-type
     string_example(ctx);
