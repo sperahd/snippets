@@ -67,7 +67,7 @@ $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/min
 1. Start minikube based cluster
 
 ~~~~
-$ minikube start
+$ minikube start --vm-driver=none
 ~~~~
 
 2. Specifying parameters to minikube start(For more such parameters, check [here](https://darkowlzz.github.io/post/minikube-config/)
