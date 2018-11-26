@@ -63,13 +63,23 @@ $ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/min
 ## minikube usage and getting started (v0.30.0)
 
 ### Note: Preferably follow steps [here](https://kubernetes-cn.github.io/docs/getting-started-guides/minikube/#quickstart)
+0. minikube has an issue where the number of inotify watches exceed the sysctl limit. Extend the limit further as a work-around
+
+~~~~
+sudo sysctl fs.inotify.max_user_watches=1048576
+~~~~
 
 1. Start minikube based cluster
 
 ~~~~
-$ minikube start
+$ minikube start --vm-driver=none
 ~~~~
 
+or
+
+~~~~
+minikube start 
+~~~~
 2. Specifying parameters to minikube start(For more such parameters, check [here](https://darkowlzz.github.io/post/minikube-config/)
 
 > Note: If there is already a minikube cluster, first delete it using:
