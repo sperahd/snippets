@@ -1,6 +1,13 @@
 #include <iostream>
 #include <vector>
 
+//String to uint64_t
+uint64_t stringtouint64(std::string s)
+{
+    return std::stoull(s, nullptr, 10);
+}
+
+//Split String to a vector
 std::vector<std::string> split(std::string s, std::string delim)
 {
     size_t pos = 0;
