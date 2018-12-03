@@ -50,17 +50,17 @@ EOF
 $ yum install kubectl
 ~~~~
 
-## minikube installation (v0.30.0)
+## minikube installation (v0.25.2)
 
 ### Note: Preferably follow steps [here](https://github.com/kubernetes/minikube/releases)
 
 1. Download minikube binary
 
 ~~~~
-$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.30.0/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube
+$ curl -Lo minikube https://storage.googleapis.com/minikube/releases/v0.25.2/minikube-linux-amd64 && chmod +x minikube && sudo cp minikube /usr/local/bin/ && rm minikube
 ~~~~
 
-## minikube usage and getting started (v0.30.0)
+## minikube usage and getting started (v0.25.2)
 
 ### Note: Preferably follow steps [here](https://kubernetes-cn.github.io/docs/getting-started-guides/minikube/#quickstart)
 0. minikube has an issue where the number of inotify watches exceed the sysctl limit. Extend the limit further as a work-around
