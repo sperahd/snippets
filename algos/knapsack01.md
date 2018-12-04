@@ -7,9 +7,8 @@ Given a set of items having certain weight and value associated with each item, 
 ## Solution
 Construct a table with columns consisting of all the items and rows consisting of total weights starting from 0 to total weight(W). Run through the rows one by one. At each column check whether the current item can be put in the knapsack or not. Populate the column with value till this point.
 
-## Recurrence relation
-Populate first row with only the first item if it can be
-
+## Explanation
+<pre>
 Items | Weights | Values
 
   A   |  6      |   10
@@ -46,6 +45,7 @@ D(1,8)  0 | 8 | 8 | 8 | 8 | 12| 12| 12| 12| 12| 12| 16
 
                                 } => max(4, 0) => 4
 
+</pre>
 Algo
 ~~~~
 
