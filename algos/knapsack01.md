@@ -46,8 +46,51 @@ D(1,8)  0 | 8 | 8 | 8 | 8 | 12| 12| 12| 12| 12| 12| 16
                                 } => max(4, 0) => 4
 
 </pre>
+
+## Link
+
+https://www.youtube.com/watch?v=8LusJS5-AGo
+
 Algo
 ~~~~
+rows = sizeof(items);
+cols = Total_Weight;
+int M[rows][cols];
+for(int i = 0; i < rows; i++)
+{
+    // When is weight is zero the maximum 
+    // value we can obtain is also 0
+    M[i][0] = 0; 
+}
 
+for(int i = 0; i < cols; i++)
+{
+    // Populating the first row with the first 
+    // item's value if first row's value is
+    // less than weight
+    if(w[0] >= j)
+    {
+        M[0][i] = v[0];
+    }
+}
+
+for(int i = 1; i < rows; i++)
+{
+    for(int j = 1; j < cols; j++)
+    {
+        if(w[j] < j)
+        {   
+            // Since this item cannot be put,
+            // the solution for the current 
+            // cell just excludes this item
+            M[i][j] = M[i-1][j];
+        }
+        else
+        {
+            // following is explained above
+            M[i][j] = max(val[j]+M[i-1][j-w[j]], M[i-1][j]);
+        }
+    }
+}
 ~~~~
 
