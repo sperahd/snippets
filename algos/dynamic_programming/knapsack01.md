@@ -1,11 +1,26 @@
 # Knapsack 0/1 problem
 
+## Link
+
+https://www.youtube.com/watch?v=8LusJS5-AGo
+
 ## Problem definition
 
 Given a set of items having certain weight and value associated with each item, for a given total weight(W) find out the maximum value that can be obtained w/o splitting any item i.e. either an item can be selected fully or not at all.
 
+## Idea
+
+If we know the maximum value that can be obtained using (n-1) items for a given weight then the maximum value for a given weight using n items is max of following two:
+
+1. Value obtained by excluding the nth item.
+2. Value obtained by adding nth item and subtracting the weight of nth item from remaining weight(remaining weight should not become negative). If the remaining weight becomes negative then this choice becomes invalid.
+
+
 ## Solution
-Construct a table with columns consisting of all the items and rows consisting of total weights starting from 0 to total weight(W). Run through the rows one by one. At each column check whether the current item can be put in the knapsack or not. Populate the column with value till this point.
+
+Construct a table with rows consisting of all the items and columns consisting of total weights starting from 0 to total weight(W). Run through the rows one by one. At each column check whether the current item can be put in the knapsack or not\*. Populate the column with value till this point.
+
+\* -> The algo is to decide whether to select the item or not.
 
 ## Explanation
 <pre>
@@ -39,17 +54,13 @@ D(1,8)  0 | 8 | 8 | 8 | 8 | 12| 12| 12| 12| 12| 12| 16
 
 \* -> M[i][j] = {max
 
-                    (val[i] + M[i-1][j-val(i)]), => means value of the current item + value of the item which can be included when this item is already there, which comes from value at one row above and (total weight - current weight)
+                    (val[i] + M[i-1][j-val(i)]), => means value of the current item + total value excluding this item and subtracting the weight of this item, which comes from value at one row above(because above row means excluding this item) and (total weight - current weight)
 
                      M[i-1][j]  => means if we exclude this item altogether
 
                                 } => max(4, 0) => 4
 
 </pre>
-
-## Link
-
-https://www.youtube.com/watch?v=8LusJS5-AGo
 
 Algo
 ~~~~
@@ -93,4 +104,3 @@ for(int i = 1; i < rows; i++)
     }
 }
 ~~~~
-
