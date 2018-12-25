@@ -40,7 +40,7 @@ class Main2:
         self.logger = logging.getLogger("consul.put.kv")
         # This logger should not push to consul since we have not 
         # defined the handler for it
-        self.logger2 = logging.getLogger("consul.put")
+        self.logger2 = logging.getLogger("consul.get")
     
     def run(self):
         for i in range(20):
