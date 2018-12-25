@@ -4,12 +4,18 @@
 $ docker run  -p 8500:8500 -p 8600:8600/udp --name=consul consul:latest agent -server -bootstrap -ui -client=0.0.0.0
 ~~~~
 
-## Putting a value using curl
+## Putting value for a key using curl
 
 ~~~~
 $ curl -X PUT -d 'abcdefghi' http://127.0.0.1:8500/v1/kv/foo/boo/goo/roo
 ~~~~
 returns true if key created
+
+## Deleting a key usign curl
+
+~~~~
+$ curl -X DELETE 'http://127.0.0.1:8500/v1/kv/foo/boo/goo/roo'
+~~~~
 
 ## Getting a value using curl
 
@@ -61,7 +67,7 @@ Response:
 ## List all the entries under a hierarchy
 
 ~~~~
-curl -s 'http://127.0.0.1:8500/v1/kv/my_service?recurse=true
+curl -s 'http://127.0.0.1:8500/v1/kv/my_service?recurse=true'
 ~~~~
 Note: recurse does not work with raw
 
@@ -84,6 +90,6 @@ Response
 Place a watch:
 
 ~~~~
-curl -s 'http://127.0.0.1:8500/v1/kv/my_service/json/discovery?index=451'
+curl -s 'http://127.0.0.1:8500/v1/kv/my_service/json/discovery?index=451&raw=1'
 ~~~~
 The above command will block until the key is modified.(Updated or deleted)
