@@ -9,9 +9,9 @@ class Main:
             level=logging.INFO
             )
         self.logger = logging.getLogger('consul.client.logger')
-        kh = ConsulLoggingHandler("127.0.0.1", "8500")
-        kh.setLevel(logging.INFO)
-        self.logger.addHandler(kh)
+        ch = ConsulLoggingHandler("127.0.0.1", "8500")
+        ch.setLevel(logging.INFO)
+        self.logger.addHandler(ch)
     def run(self):
         for i in range(20):
             log = f'abc/def/{i}:value_{i}'
@@ -53,8 +53,8 @@ class Main2:
 
 
 if __name__ == "__main__":
-    #main = Main()
-    #main.run()
+    main = Main()
+    main.run()
 
     main2 = Main2()
     main2.run()
